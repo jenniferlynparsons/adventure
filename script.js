@@ -1,14 +1,46 @@
-// Zombie Apocalypse!
-//
-// Let's create a text adventure game with JavaScript. Let's set a scenario in which we encounter a zombie, choose a weapon to fight the zombie with, and have a 50/50 chance of either defeating the zombie with our weapon, or getting bitten and losing the game.
+var random = function(x){
+    return Math.round(Math.random() * x);
+};
 
-alert("The world has ended as we know it. The zombies have taken over and you're on your own. You're trying to get to the local grocery store when you encounter one of the undead. Time to grab a weapon!");
-var weapon = prompt("Which weapon do you have with you? Is it a baseball bat, an axe, or a crowbar?");
+var scenarios = [
+  "<p>You're walking to the local grocery store because your supplies have run out at home. Hopefully there's something left to scavenge.</p><button id='zombie'>Continue</button>",
+  "<p>You're returning from a scavenging mission and you found a real treat! A candy bar, still fresh enough to eat.</p><button id='zombie'>Continue</button>",
+  "<p>The last of your companions hasn't returned from their foray out for food. You're out looking for them.</p><button id='zombie'>Continue</button>"
+];
 
-var random = Math.round(Math.random() * 2);
+var weapons = ["axe","crowbar","baseball bat"];
 
-if(random === 1){
-  alert("You swing the "+weapon+" at the zombie and take its head off. You live to fight another day!");
-}else{
-  alert("You swing the "+weapon+" at the zombie, but you miss its head. It grabs you and is currently feasting on your brains.")
-}
+var gameframe = document.getElementById('gameframe');
+
+var reset = function(){
+    gameframe.innerHTML = scenarios[random(scenarios.length - 1)];
+    document.getElementById('zombie').onclick = zombieclick;
+};
+
+var zombieclick = function(){
+  gameframe.innerHTML = "<p>Oh no! Around the corner comes a zombie!</p><button id='weapon'>Grab a weapon!</button>";
+  document.getElementById('weapon').onclick = chooseweaponclick;
+};
+
+var chooseweaponclick = function(){
+  var chosen = weapons[random(weapons.length - 1)];
+  gameframe.innerHTML = "<p>You grab a "+chosen+"</p><button id='swing'>Swing it at the zombie!</button>";
+  document.getElementById('swing').onclick = swingclick;
+};
+
+var swingclick = function(){
+  var weaponswing = random(2);
+  if(weaponswing === 1){
+    gameframe.innerHTML = "<p>You miss the zombie's head. It is currently munching on your brains.</p><button id='replay'>Play again?</button>";
+  }else{
+    gameframe.innerHTML = "<p>You defeated the zombie! It's head goes flying and you can continue on your way.</p><button id='replay'>Play again?</button>";
+  }
+  document.getElementById('replay').onclick = reset;
+};
+
+
+if(gameframe.children.length === 0){
+  gameframe.innerHTML = scenarios[random(scenarios.length - 1)];
+};
+
+document.getElementById('zombie').onclick = zombieclick;
