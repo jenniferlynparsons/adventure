@@ -18,7 +18,7 @@ var reset = function(){
 };
 
 var zombieclick = function(){
-  gameframe.innerHTML = "<p>Oh no! Around the corner comes a zombie!</p><button id='weapon'>Grab a weapon!</button>";
+  gameframe.innerHTML = "<p>Oh no! You thought you were alone, but here comes a zombie!</p><button id='weapon'>Grab a weapon!</button>";
   document.getElementById('weapon').onclick = chooseweaponclick;
 };
 

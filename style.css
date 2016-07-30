@@ -1,7 +1,5 @@
 body{
-  height: 100%;
   margin: 0;
-  padding: 20px;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-image: -webkit-linear-gradient(-90deg, rgba(99,33,0,1) 0, rgba(124,188,10,1) 100%);
@@ -14,6 +12,22 @@ body{
   text-overflow: ellipsis;
 }
 
+#background{
+  height: 100vh;
+  width: 100vw;
+  opacity: 0.4;
+  background: url(zombie-fff.png) no-repeat  -130px bottom;
+  position: fixed;
+  z-index: -1;
+}
+
+h1{
+  font-family: 'Bangers', cursive;
+  font-size: 4rem;
+  margin-top: 0;
+  padding-top: 10%;
+}
+
 button{
   display: inline-block;
   -webkit-box-sizing: content-box;
@@ -24,19 +38,33 @@ button{
   -webkit-border-radius: 10px;
   border-radius: 10px;
   font: normal 1rem/1.4 "Lucida Console", Monaco, monospace;
-  color: rgba(255,255,255,0.9);
-  background: -webkit-linear-gradient(-232.37deg, rgba(66,57,5,1) 0, rgba(124,188,10,1) 100%);
-  background: -moz-linear-gradient(322.37deg, rgba(66,57,5,1) 0, rgba(124,188,10,1) 100%);
-  background: linear-gradient(322.37deg, rgba(66,57,5,1) 0, rgba(124,188,10,1) 100%);
+  color:rgba(99,33,0,1);
+  background: rgba(241,231,103,1);
+  background: -moz-linear-gradient(-45deg, rgba(241,231,103,1) 0%, rgba(150,250,0,1) 100%);
+  background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(241,231,103,1)), color-stop(100%, rgba(150,250,0,1)));
+  background: -webkit-linear-gradient(-45deg, rgba(241,231,103,1) 0%, rgba(150,250,0,1) 100%);
+  background: -o-linear-gradient(-45deg, rgba(241,231,103,1) 0%, rgba(150,250,0,1) 100%);
+  background: -ms-linear-gradient(-45deg, rgba(241,231,103,1) 0%, rgba(150,250,0,1) 100%);
+  background: linear-gradient(135deg, rgba(241,231,103,1) 0%, rgba(150,250,0,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1e767', endColorstr='#96fa00', GradientType=1 );
 }
 
 #gameframe{
   width: 80%;
   max-width: 400px;
   margin: 0 auto;
-  height: 30px;
+  min-height: 200px;
 }
 
 #gameframe p{
   min-height: 100px;
+}
+
+#credits{
+  padding-top:20px;
+  font-size: .8rem;
+}
+
+#credits a{
+  color:#fff;
 }
